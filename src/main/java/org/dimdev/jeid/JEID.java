@@ -17,6 +17,7 @@ import net.minecraft.world.biome.BiomeVoid;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 import org.dimdev.jeid.network.MessageManager;
@@ -25,8 +26,10 @@ import java.util.Random;
 
 @Mod(modid = "jeid",
      name = "JustEnoughIDs",
-     useMetadata = true 
+     useMetadata = true ,
+     version = "1.0.4-SNAPSHOT",
     )
+@Mod.EventBusSubscriber()     
 public class JEID {
     private static final boolean DEBUG_BLOCK_IDS = false;
     private static final boolean DEBUG_ITEM_IDS = false;
@@ -36,7 +39,14 @@ public class JEID {
     public static final Biome errorBiome = new BiomeVoid(new Biome.BiomeProperties("A mod doesn't support extended biome IDs -- report to JEID"))
             .setRegistryName("jeid:error_biome");
 
-
+    @Mod.Instance("jeid")
+    public static JEID instance;
+     
+    @Mod.EventHandler
+    public void init(FMLInitializationEvent event) {
+        MinecraftForge.EVENT_BUS.register(this);
+    }
+     
     @Mod.EventHandler
     public void onPreInit(FMLPreInitializationEvent event) {
         // Register messages
