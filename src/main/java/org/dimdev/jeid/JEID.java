@@ -25,11 +25,7 @@ import org.dimdev.jeid.network.MessageManager;
 
 import java.util.Random;
 
-@Mod(modid = "jeid",
-     name = "JustEnoughIDs",
-     useMetadata = true ,
-     version = "1.0.4-SNAPSHOT"
-    )
+@Mod(modid = "jeid", useMetadata = true, acceptedMinecraftVersions = "[1.12,1.13)", version = "1.0.4-SNAPSHOT")
 @Mod.EventBusSubscriber()     
 public class JEID {
     private static final boolean DEBUG_BLOCK_IDS = false;
