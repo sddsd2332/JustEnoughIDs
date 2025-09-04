@@ -27,7 +27,7 @@ import java.util.Random;
 @Mod(modid = "jeid",
      name = "JustEnoughIDs",
      useMetadata = true ,
-     version = "1.0.4-SNAPSHOT",
+     version = "1.0.4-SNAPSHOT"
     )
 @Mod.EventBusSubscriber()     
 public class JEID {
