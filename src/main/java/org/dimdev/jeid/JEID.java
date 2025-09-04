@@ -17,6 +17,8 @@ import net.minecraft.world.biome.BiomeVoid;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 import org.dimdev.jeid.network.MessageManager;
@@ -40,6 +42,11 @@ public class JEID {
 
     @Mod.Instance("jeid")
     public static JEID instance;
+
+     @Mod.EventHandler
+    public void init(FMLInitializationEvent event) {
+        MinecraftForge.EVENT_BUS.register(this);
+    } 
      
     @Mod.EventHandler
     public void onPreInit(FMLPreInitializationEvent event) {
